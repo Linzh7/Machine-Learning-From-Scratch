@@ -1,7 +1,7 @@
 import numpy as np
 
 
-class PrebuiltData:
+class PrebuiltData():
     def Fx(x, a=0, b=3, c=3):
         return a * x**2 + b * x + c
 

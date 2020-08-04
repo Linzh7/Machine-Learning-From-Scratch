@@ -2,7 +2,7 @@ import numpy as np
 import Cost
 
 
-class Enumerate:
+class Enumerate():
     def LinerRegressionEnumerate(data_x, data_y, maxRange=100, stepSize=1):
         cost = 0x7fffffff
         costSave = 0x7fffffff
