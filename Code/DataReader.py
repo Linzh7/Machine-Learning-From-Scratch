@@ -1,7 +1,10 @@
-import random
+import numpy as np
 
 class PrebuiltData:
-    def MyData(int rangeStart = 0, int rangeEnd = 99, rangeStep=1, int k = 3, int b = 6):
-        data_x = list(range(rangeStart, rangeEnd, rangeStep))
-        data_y = list(map(lambda x: x * (k - 1 + random.random()) + b * random.random(), data_x))
+    def Fx(x, a=0, b=3, c=3):
+        return 
+    def MyData(rangeStart = 0, rangeEnd = 99, rangeNum=100):
+        data_x = np.linspace(rangeStart, rangeEnd, rangeNum)
+        random = np.random.randn(len(data_x))
+        data_y = 
         return data_x, data_y
