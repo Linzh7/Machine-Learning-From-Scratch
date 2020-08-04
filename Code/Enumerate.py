@@ -1,3 +1,4 @@
+import numpy as np
 import Cost
 
 
@@ -15,5 +16,5 @@ class Enumerate:
                     kSave = k
                     bSave = b
                     costSave = cost
-                    print(k, b, cost)
+                    #print(k, b, cost)
         return kSave, bSave, costSave
