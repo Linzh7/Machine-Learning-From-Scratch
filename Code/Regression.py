@@ -57,5 +57,5 @@ class GradientDescent():
                 cost=Cost.LinerRegressionCost(data_x, predict_y)
                 print(cost)
                 
-        return cost 
+        return cost
 
