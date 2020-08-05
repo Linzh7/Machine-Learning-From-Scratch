@@ -56,6 +56,5 @@ class GradientDescent():
                 predict_y = np.array(map((lambda x: theta0 + theta1 * x, data_x))
                 cost=Cost.LinerRegressionCost(data_x, predict_y)
                 print(cost)
-                
         return cost
 
