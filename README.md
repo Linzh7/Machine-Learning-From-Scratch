@@ -1,6 +1,7 @@
 # Machine-Learning-From-Scratch
 
 睡梦中决定使用np之类的库，修改中。
+
 写着写着写成c++了，修改中。
 
 ## 前言
@@ -12,9 +13,7 @@
 ## 线性回归
 
 我使用了随机生成的数据，大概是
-$$
-y=3x+3
-$$
+$$y=3x+3$$
 如果不想用默认的这个，可以传参进去，使用方法：
 
 DataReader.PrebuiltData.MyData(rangeStart, rangeEnd, rangeStep, k, b)
@@ -27,4 +26,4 @@ DataReader.PrebuiltData.MyData(rangeStart, rangeEnd, rangeStep, k, b)
 
 ### 不好的寻找方式：枚举
 
-假设我们使用一层全连接网络
+假设我们使用一个2层、每层10个节点的全连接网络，除bias外的参数就有100个，我们自然也可以找到一个「恰当」的参数，但其精细度与复杂度非常高。
