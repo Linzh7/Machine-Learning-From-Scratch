@@ -1,3 +1,5 @@
 *.pyc
 /Code/__pycache__/
 /Code/__pycache__
+/.DS_Store
+*/.DS_Store
