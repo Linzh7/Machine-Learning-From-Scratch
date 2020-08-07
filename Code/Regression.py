@@ -4,14 +4,13 @@ from Cost import Cost
 
 class Enumerate():
     def LinerRegressionEnumerate(data_x, data_y, maxRange=100, stepSize=1):
-        cost = 0x7fffffff
-        costSave = 0x7fffffff
+        cost = costSave = 0x7fffffff
         kSave = 0
         bSave = 0
         for k in range(0, maxRange, stepSize):
             for b in range(0, maxRange, stepSize):
                 predict_y = list(map(lambda x: x * k + b, data_x))
-                cost = Cost.LinerRegressionCost(data_y, predict_y, k, b)
+                cost = Cost.SquaredErrors(data_y, predict_y, k, b)
                 if cost < costSave:
                     kSave = k
                     bSave = b
@@ -54,7 +53,7 @@ class GradientDescent():
                 for i in np.arange(len(theta)):
                     theta[i] -= alpha * diff * x[index][i]
                 predict_y = np.array(map((lambda x: theta0 + theta1 * x, data_x))
-                cost=Cost.LinerRegressionCost(data_x, predict_y)
+                cost=Cost.SquaredErrors(data_x, predict_y)
                 print(cost)
         return cost
 

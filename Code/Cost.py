@@ -3,7 +3,7 @@ import math
 
 
 class Cost():
-    def LinerRegressionCost(data, predict):
+    def SquaredRegressionCost(data, predict):
         if len(data) != len(predict):
             print("Lengths of two data list are not equal.")
             return 0x7fffffff
