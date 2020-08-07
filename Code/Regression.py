@@ -10,7 +10,7 @@ class Enumerate():
         for k in range(0, maxRange, stepSize):
             for b in range(0, maxRange, stepSize):
                 predict_y = list(map(lambda x: x * k + b, data_x))
-                cost = Cost.SquaredErrors(data_y, predict_y, k, b)
+                cost = Cost.SquaredErrors(data_y, predict_y)
                 if cost < costSave:
                     kSave = k
                     bSave = b
@@ -20,21 +20,21 @@ class Enumerate():
 
 class LeastSquaresMethod():
     def LinerLeastSquaresMethod(data_x, data_y):
-    xMean=np.mean(data_x)
-    sumYX = 0
-    sumX2 = 0
-    for i in np.arange(len(data_x)):
-        x = data_x[i]
-        y = data_y[i]
-        sumYX += y * (x - xMean)
-        sumX2 += x**2
-    w = sumYX / (sumX2 - M * (xMean ** 2))
-    sumDelta = 0
-    for i in np.arange(len(data_x)):
-        x = data_x[i]
-        y = data_y[i]
-        sumDelta += (y - w * x)
-    b = sumDelta / len(data_x)
+        xMean=np.mean(data_x)
+        sumYX = 0
+        sumX2 = 0
+        for i in np.arange(len(data_x)):
+            x = data_x[i]
+            y = data_y[i]
+            sumYX += y * (x - xMean)
+            sumX2 += x**2
+        w = sumYX / (sumX2 - M * (xMean ** 2))
+        sumDelta = 0
+        for i in np.arange(len(data_x)):
+            x = data_x[i]
+            y = data_y[i]
+            sumDelta += (y - w * x)
+        b = sumDelta / len(data_x)
     return w, b
 
 

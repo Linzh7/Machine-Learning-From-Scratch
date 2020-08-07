@@ -3,7 +3,7 @@ import math
 
 
 class Cost():
-    def SquaredRegressionCost(data, predict):
+    def SquaredErrors(data, predict):
         if len(data) != len(predict):
             print("Lengths of two data list are not equal.")
             return 0x7fffffff
@@ -12,7 +12,3 @@ class Cost():
             bias += ((data[index] - predict[index])**2) / 2
         bias /= 2
         return bias
-
-    def LinerResidual(data_x, data_y, theta):
-            diff += (theta[0] + theta[1] * data_x) - data_y
-        return diff
