@@ -28,14 +28,14 @@ class LeastSquaresMethod():
             y = data_y[i]
             sumYX += y * (x - xMean)
             sumX2 += x**2
-        w = sumYX / (sumX2 - M * (xMean ** 2))
+        w = sumYX / (sumX2 - len(data_x) * (xMean ** 2))
         sumDelta = 0
         for i in np.arange(len(data_x)):
             x = data_x[i]
             y = data_y[i]
             sumDelta += (y - w * x)
         b = sumDelta / len(data_x)
-    return w, b
+        return w, b
 
 
 class GradientDescent():
