@@ -53,7 +53,27 @@ class GradientDescent():
                 for i in np.arange(len(theta)):
                     theta[i] -= alpha * diff * x[index][i]
                 predict_y = np.array(map((lambda x: theta0 + theta1 * x, data_x))
-                cost=Cost.SquaredErrors(data_x, predict_y)
-                print(cost)
+                cost = Cost.SquaredErrors(data_x, predict_y)
+                print(count, cost)
         return cost
 
+
+    def GradientDescent(alpha=0.001, data_x, data_y, order):
+        order += 1
+        count = 0
+        theta = []
+        for i in np.arange(order):
+            theta.append(0)
+        while ():
+            count += 1
+            for index in np.arange(len(data_x)):
+                sumValue = 0
+                for i in np.arange(order):
+                    sumValue += theta[i] * data_x ** i
+                diff = sumValue - data_y
+                for i in np.arange(len(theta)):
+                    theta[i] -= alpha * diff * x[index][i]
+                predict_y = np.array(map((lambda x: theta0 + theta1 * x, data_x))
+                cost=Cost.SquaredErrors(data_x, predict_y)
+                print(count, cost)
+        return cost
