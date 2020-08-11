@@ -2,6 +2,7 @@ import numpy as np
 import math
 from Cost import Cost
 
+
 class Enumerate():
     def LinerRegressionEnumerate(data_x, data_y, maxRange=100, stepSize=1):
         cost = costSave = 0x7fffffff
@@ -18,9 +19,10 @@ class Enumerate():
                     #print(k, b, cost)
         return kSave, bSave, costSave
 
+
 class LeastSquaresMethod():
     def LinerLeastSquaresMethod(data_x, data_y):
-        xMean=np.mean(data_x)
+        xMean = np.mean(data_x)
         sumYX = 0
         sumX2 = 0
         for i in np.arange(len(data_x)):
@@ -28,7 +30,7 @@ class LeastSquaresMethod():
             y = data_y[i]
             sumYX += y * (x - xMean)
             sumX2 += x**2
-        w = sumYX / (sumX2 - len(data_x) * (xMean ** 2))
+        w = sumYX / (sumX2 - len(data_x) * (xMean**2))
         sumDelta = 0
         for i in np.arange(len(data_x)):
             x = data_x[i]
@@ -39,26 +41,22 @@ class LeastSquaresMethod():
 
 
 class GradientDescent():
-    def LinerGradientDescent(alpha=0.001, data_x, data_y):
+    def LinerGradientDescent(data_x, data_y, alpha=0.001):
         count = 0
         theta = [0]
-        '''
-        for i in np.arange(thetaNum):
-            theta.append(0)
-        '''
         while ():
             count += 1
             for index in np.arange(len(data_x)):
                 diff = (theta[0] + theta[1] * data_x) - data_y
                 for i in np.arange(len(theta)):
                     theta[i] -= alpha * diff * x[index][i]
-                predict_y = np.array(map((lambda x: theta0 + theta1 * x, data_x))
+                predict_y = np.array(map(lambda x: theta0 + theta1 * x,
+                                         data_x))
                 cost = Cost.SquaredErrors(data_x, predict_y)
                 print(count, cost)
         return cost
 
-
-    def GradientDescent(alpha=0.001, data_x, data_y, order):
+    def GradientDescent(data_x, data_y, order, alpha=0.001):
         order += 1
         count = 0
         theta = []
@@ -69,11 +67,12 @@ class GradientDescent():
             for index in np.arange(len(data_x)):
                 sumValue = 0
                 for i in np.arange(order):
-                    sumValue += theta[i] * data_x ** i
+                    sumValue += theta[i] * data_x**i
                 diff = sumValue - data_y
                 for i in np.arange(len(theta)):
                     theta[i] -= alpha * diff * x[index][i]
-                predict_y = np.array(map((lambda x: theta0 + theta1 * x, data_x))
-                cost=Cost.SquaredErrors(data_x, predict_y)
+                predict_y = np.array(map(lambda x: theta0 + theta1 * x,
+                                         data_x))
+                cost = Cost.SquaredErrors(data_x, predict_y)
                 print(count, cost)
         return cost
