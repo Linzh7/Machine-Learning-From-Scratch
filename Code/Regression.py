@@ -10,7 +10,7 @@ class Enumerate():
         bSave = 0
         for k in np.arange(0, maxRange, stepSize):
             for b in np.arange(0, maxRange, stepSize):
-                predict_y = list(map(lambda x: x * k + b, data_x))
+                predict_y = np.array(data_x * k + b)
                 cost = Cost.SquaredErrors(data_y, predict_y)
                 if cost < costSave:
                     kSave = k
@@ -30,49 +30,35 @@ class LeastSquaresMethod():
             y = data_y[i]
             sumYX += y * (x - xMean)
             sumX2 += x**2
-        w = sumYX / (sumX2 - len(data_x) * (xMean**2))
+        k = sumYX / (sumX2 - len(data_x) * (xMean**2))
         sumDelta = 0
         for i in np.arange(len(data_x)):
             x = data_x[i]
             y = data_y[i]
-            sumDelta += (y - w * x)
+            sumDelta += (y - k * x)
         b = sumDelta / len(data_x)
-        return w, b
+        return k, b
 
 
 class GradientDescent():
-    def LinerGradientDescent(data_x, data_y, alpha=0.001):
+    def LinerGradientDescent(data_x, data_y, alpha=0.001, error=0.001):
         count = 0
-        theta = [0]
-        while ():
+        theta = [np.random.randint(100), np.random.randint(100)]
+        diff = [0, 0]
+        dataCost = Cost.SquaredErrors(data_x, data_y)
+        predictCost = 0x7fffffff
+        while predictCost - dataCost > error:
             count += 1
-            for index in np.arange(len(data_x)):
-                diff = (theta[0] + theta[1] * data_x) - data_y
-                for i in np.arange(len(theta)):
-                    theta[i] -= alpha * diff * x[index][i]
+            for index in range(len(data_x)):
+                for i in range(len(theta)):
+                    for j in range(len(theta)):
+                        if data_x[index] != 0 or i != 0:
+                            diff[i] += (theta[j] * data_x[index]**i)
+                for i in range(len(theta)):
+                    theta[i] -= alpha * diff[i]
                 predict_y = np.array(map(lambda x: theta0 + theta1 * x,
                                          data_x))
-                cost = Cost.SquaredErrors(data_x, predict_y)
-                print(count, cost)
-        return cost
-
-    def GradientDescent(data_x, data_y, order, alpha=0.001):
-        order += 1
-        count = 0
-        theta = []
-        for i in np.arange(order):
-            theta.append(0)
-        while ():
-            count += 1
-            for index in np.arange(len(data_x)):
-                sumValue = 0
-                for i in np.arange(order):
-                    sumValue += theta[i] * data_x**i
-                diff = sumValue - data_y
-                for i in np.arange(len(theta)):
-                    theta[i] -= alpha * diff * x[index][i]
-                predict_y = np.array(map(lambda x: theta0 + theta1 * x,
-                                         data_x))
-                cost = Cost.SquaredErrors(data_x, predict_y)
-                print(count, cost)
-        return cost
+                predictCost = Cost.SquaredErrors(data_x, predict_y)
+                if count % 100 == 0:
+                    print(count, predictCost)
+        return theta, predictCost

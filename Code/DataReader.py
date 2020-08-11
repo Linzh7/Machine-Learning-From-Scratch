@@ -14,7 +14,8 @@ class PrebuiltData():
                c=3):
         data_x = np.linspace(rangeStart, rangeEnd, rangeNum)
         random = np.random.randn(len(data_x))
-        data_y = PrebuiltData.Fx(data_x, a, b, c) + randomFloat * random
+        data_y = np.array(
+            PrebuiltData.Fx(data_x, a, b, c) + randomFloat * random)
         return data_x, data_y
 
     def MyGivenData():
@@ -40,4 +41,4 @@ class PrebuiltData():
             261.71, 264.59, 267.76, 268.21, 274.39, 275.98, 280.82, 283.98,
             282.57, 285.02, 288.28, 296.47, 294.98, 299.00
         ]
-        return data_x, data_y
+        return np.array(data_x), np.array(data_y)
