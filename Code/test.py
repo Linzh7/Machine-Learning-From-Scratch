@@ -8,21 +8,19 @@ class GradientDescent():
         count = 0
         order += 1
         theta = []
-        diff = []
+        diff = 0
         for i in range(order):
-            theta.append(np.random.randint(100))
-            diff.append(0)
+            theta.append(0)
         dataCost = Cost.SquaredErrors(data_x, data_y)
         predictCost = 0x7fffffff
         while predictCost - dataCost > error:
             count += 1
             for index in range(len(data_x)):
+                diff = 0
                 for i in range(order):
-                    for j in range(order):
-                        if data_x[index] != 0 or i != 0:
-                            diff[i] += (theta[j] * data_x[index]**i)
+                    diff += theta[i] * data_x[index]**i
                 for i in range(order):
-                    theta[i] -= alpha * diff[i]
+                    theta[i] -= alpha * diff * data_x[index]
                 predict_y = np.zeros(data_x.shape)
                 for i in range(order):
                     predict_y += theta[i] * data_x**i
