@@ -41,24 +41,29 @@ class LeastSquaresMethod():
 
 
 class GradientDescent():
-    def LinerGradientDescent(data_x, data_y, alpha=0.001, error=0.001):
+    def LinerGradientDescent(data_x,
+                             data_y,
+                             epsilon=0.01,
+                             learningRate=0.0001):
         count = 0
-        theta = [np.random.randint(100), np.random.randint(100)]
-        diff = [0, 0]
-        dataCost = Cost.SquaredErrors(data_x, data_y)
-        predictCost = 0x7fffffff
-        while predictCost - dataCost > error:
+        theta = [0, 0]
+        predictCost1 = -99999999
+        while True:
             count += 1
+            gradient = [0, 0]
+            N = float(len(data_x))
             for index in range(len(data_x)):
-                for i in range(len(theta)):
-                    for j in range(len(theta)):
-                        if data_x[index] != 0 or i != 0:
-                            diff[i] += (theta[j] * data_x[index]**i)
-                for i in range(len(theta)):
-                    theta[i] -= alpha * diff[i]
-                predict_y = np.array(map(lambda x: theta0 + theta1 * x,
-                                         data_x))
-                predictCost = Cost.SquaredErrors(data_x, predict_y)
-                if count % 100 == 0:
-                    print(count, predictCost)
-        return theta, predictCost
+                diff = (theta[0] + theta[1] * data_x[index]) - data_y[index]
+                gradient[0] += (2 / N) * diff
+                gradient[1] += (2 / N) * data_x[index] * diff
+            theta[0] -= learningRate * gradient[0]
+            theta[1] -= learningRate * gradient[1]
+
+            predict_y = theta[0] + theta[1] * data_x
+
+            predictCost0 = Cost.SquaredErrors(data_x, predict_y)
+
+            if predictCost0 - predictCost1 < epsilon:
+                return theta, predictCost0
+            else:
+                predictCost1 = predictCost0
