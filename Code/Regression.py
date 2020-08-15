@@ -67,3 +67,39 @@ class GradientDescent():
                 return theta, predictCost0
             else:
                 predictCost1 = predictCost0
+
+    def HighOrderGradientDescent(data_x,
+                                 data_y,
+                                 order,
+                                 epsilon=0.01,
+                                 learningRate=0.0001):
+        order += 1
+        count = 0
+        theta = []
+        for i in range(order):
+            theta.append(0)
+        predictCost1 = -99999999
+        while True:
+            count += 1
+            gradient = []
+            for i in range(order):
+                gradient.append(0)
+            N = float(len(data_x))
+            for index in range(len(data_x)):
+                diff = (theta[0] + theta[1] * data_x[index]) - data_y[index]
+                gradient[0] += (2 / N) * diff
+                for i in range(1, order):
+                    gradient[i] += (2 / N) * data_x[index] * diff
+            for i in range(1, order):
+                theta[i] -= learningRate * gradient[0]
+
+            predict_y = np.zeros(data_x.shape)
+            for i in range(1, order):
+                predict_y += theta[0] * data_x**i
+
+            predictCost0 = Cost.SquaredErrors(data_x, predict_y)
+
+            if predictCost0 - predictCost1 < epsilon:
+                return theta, predictCost0
+            else:
+                predictCost1 = predictCost0
