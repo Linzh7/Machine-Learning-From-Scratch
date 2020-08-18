@@ -26,14 +26,13 @@ def MultivariateGradientDescent(data_x,
             for i in range(variableNum):
                 gradient[i] += (2.0 / len(data_y)) * data_x[i][index] * diff
             for i in range(variableNum):
-                theta[i] -= learningRate * gradient[0]
+                theta[i] -= learningRate * gradient[i]
         predict_y = np.zeros(data_y.shape)
         for i in range(variableNum):
             predict_y += theta[i] * data_x[i]
         predictCost0 = Cost.SquaredErrors(data_y, predict_y)
         if predictCost0 - predictCost1 < epsilon:
-            pass
-        #    return theta, predictCost0
+            return theta, predictCost0
         else:
             predictCost1 = predictCost0
 
