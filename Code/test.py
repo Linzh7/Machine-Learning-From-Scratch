@@ -3,35 +3,41 @@ from Cost import Cost
 import DataReader
 
 
-class GradientDescent():
-    def LinerGradientDescent(data_x,
-                             data_y,
-                             epsilon=0.01,
-                             learningRate=0.0001):
-        count = 0
-        theta = [0, 0]
-        predictCost1 = -99999999
-        while True:
-            count += 1
-            gradient = [0, 0]
-            N = float(len(data_x))
-            for index in range(len(data_x)):
-                diff = (theta[0] + theta[1] * data_x[index]) - data_y[index]
-                gradient[0] += (2 / N) * diff
-                gradient[1] += (2 / N) * data_x[index] * diff
-            theta[0] -= learningRate * gradient[0]
-            theta[1] -= learningRate * gradient[1]
+def MultivariateGradientDescent(data_x,
+                                data_y,
+                                variableNum,
+                                epsilon=0.01,
+                                learningRate=0.0001):
+    count = 0
+    theta = []
+    for i in range(variableNum):
+        theta.append(0)
+    predictCost1 = -99999999
+    while True:
+        count += 1
+        gradient = []
+        for i in range(variableNum):
+            gradient.append(0)
+        for index in range(len(data_y)):
+            diff = 0
+            for i in range(len(data_x)):
+                diff += theta[i] * data_x[i][index]
+            diff -= data_y[index]
+            for i in range(variableNum):
+                gradient[i] += (2.0 / len(data_y)) * data_x[i][index] * diff
+            for i in range(variableNum):
+                theta[i] -= learningRate * gradient[0]
+        predict_y = np.zeros(data_y.shape)
+        for i in range(variableNum):
+            predict_y += theta[i] * data_x[i]
+        predictCost0 = Cost.SquaredErrors(data_y, predict_y)
+        if predictCost0 - predictCost1 < epsilon:
+            pass
+        #    return theta, predictCost0
+        else:
+            predictCost1 = predictCost0
 
-            predict_y = theta[0] + theta[1] * data_x
 
-            predictCost0 = Cost.SquaredErrors(data_x, predict_y)
-
-            if predictCost0 - predictCost1 < epsilon:
-                return theta, predictCost0
-            else:
-                predictCost1 = predictCost0
-
-
-data_x, data_y = DataReader.PrebuiltData.MyGivenData()
-theta, cost = GradientDescent.LinerGradientDescent(data_x, data_y)
+data_x, data_y = DataReader.PrebuiltData.MyMultivariateGivenData()
+theta, cost = MultivariateGradientDescent(data_x, data_y, 2)
 print(theta, cost)
