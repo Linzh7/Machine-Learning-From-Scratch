@@ -45,7 +45,9 @@ class PrebuiltData():
 
     #3a+5b+normal()
     def MyMultivariateGivenData():
-        data_x = np.append([range(1, 100)], [range(2, 200, 2)]).reshape(2, 99)
+        data_x = []
+        for i in range(1, 100):
+            data_x.append([i, 2 * i])
         data_y = np.array([
             11.60, 24.60, 37.60, 50.60, 63.60, 76.60, 89.60, 102.60, 115.60,
             128.60, 141.60, 154.60, 167.60, 180.60, 193.60, 206.60, 219.60,
