@@ -43,7 +43,7 @@ class PrebuiltData():
                           f * np.random.normal())
         return data_x, data_y
 
-    #3a+5b+normal()
+    #3a + 5b + normal()
     def MyMultivariateGivenData():
         data_x = []
         for i in range(1, 100):
@@ -63,4 +63,4 @@ class PrebuiltData():
             1155.60, 1168.60, 1181.60, 1194.60, 1207.60, 1220.60, 1233.60,
             1246.60, 1259.60, 1272.60, 1285.60
         ])
-        return data_x, data_y
+        return np.array(data_x), data_y
