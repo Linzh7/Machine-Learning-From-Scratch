@@ -4,6 +4,7 @@ import math
 
 class Cost():
     def SquaredErrors(data, predict):
+        # detect length
         if data.shape != predict.shape:
             print("Lengths of two data list are not equal.")
             return -1
