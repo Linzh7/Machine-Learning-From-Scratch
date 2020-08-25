@@ -9,7 +9,7 @@ class GradientDescent():
                              data_y,
                              variableNum,
                              epsilon=0.01,
-                             learningRate=0.0001):
+                             learningRate=0.001):
         count = 0
         theta = np.ones((variableNum, ), dtype=np.float32)
         predict_y = np.zeros((len(data_y), ), dtype=np.float32)
