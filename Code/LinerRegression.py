@@ -147,3 +147,4 @@ class GradientDescent():
                 return theta, predictCost0
             else:
                 predictCost1 = predictCost0
+
