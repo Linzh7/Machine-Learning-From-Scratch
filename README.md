@@ -8,11 +8,6 @@
 
 ## 线性回归
 
-我使用了随机生成的数据，大概是 y=3x+3
-如果不想用默认的这个，可以传参进去，使用方法：
-
-DataReader.PrebuiltData.MyData(rangeStart, rangeEnd, rangeStep, k, b)
-
 ### 代价函数
 
 无论使用哪种方式去寻找我们需要的线性方程，总要有一个评价指标。我们称之为代价函数，
