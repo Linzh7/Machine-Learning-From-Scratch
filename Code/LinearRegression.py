@@ -4,7 +4,7 @@ from Cost import Cost
 
 
 class Enumerate():
-    def LinerRegressionEnumerate(data_x, data_y, maxRange=10, stepSize=0.1):
+    def LinearRegressionEnumerate(data_x, data_y, maxRange=10, stepSize=0.1):
         cost = costSave = 0x7fffffff
         kSave = 0
         bSave = 0
@@ -21,7 +21,7 @@ class Enumerate():
 
 
 class LeastSquaresMethod():
-    def LinerLeastSquaresMethod(data_x, data_y):
+    def LinearLeastSquaresMethod(data_x, data_y):
         xMean = np.mean(data_x)
         sumYX = 0
         sumX2 = 0
