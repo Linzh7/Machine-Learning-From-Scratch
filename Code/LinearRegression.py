@@ -1,10 +1,9 @@
 import numpy as np
 import math
-from Cost import Cost
 
 
 class Enumerate():
-    def LinearRegressionEnumerate(data_x, data_y, maxRange=10, stepSize=0.1):
+    def LinearRegressionEnumerate(self, data_x, data_y, maxRange=10, stepSize=0.1):
         cost = costSave = 0x7fffffff
         kSave = 0
         bSave = 0
@@ -21,7 +20,7 @@ class Enumerate():
 
 
 class LeastSquaresMethod():
-    def LinearLeastSquaresMethod(data_x, data_y):
+    def LinearLeastSquaresMethod(self, data_x, data_y):
         xMean = np.mean(data_x)
         sumYX = 0
         sumX2 = 0
@@ -41,7 +40,8 @@ class LeastSquaresMethod():
 
 
 class GradientDescent():
-    def BatchGradientDescent(data_x,
+    def BatchGradientDescent(self,
+                             data_x,
                              data_y,
                              variableNum,
                              epsilon=0.01,
@@ -74,7 +74,8 @@ class GradientDescent():
             else:
                 predictCost1 = predictCost0
 
-    def StochasticGradientDescent(data_x,
+    def StochasticGradientDescent(self,
+                                  data_x,
                                   data_y,
                                   variableNum,
                                   epsilon=0.01,
@@ -106,7 +107,8 @@ class GradientDescent():
                     predictCost1 = predictCost0
                     class GradientDescent():
 
-    def MinibatchGradientDescent(data_x,
+    def MinibatchGradientDescent(self,
+                                 data_x,
                                  data_y,
                                  variableNum,
                                  batchSize,
