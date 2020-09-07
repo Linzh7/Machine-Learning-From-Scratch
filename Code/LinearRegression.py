@@ -3,7 +3,11 @@ import math
 
 
 class Enumerate():
-    def LinearRegressionEnumerate(self, data_x, data_y, maxRange=10, stepSize=0.1):
+    def LinearRegressionEnumerate(self,
+                                  data_x,
+                                  data_y,
+                                  maxRange=10,
+                                  stepSize=0.1):
         cost = costSave = 0x7fffffff
         kSave = 0
         bSave = 0
@@ -105,8 +109,9 @@ class GradientDescent():
                     return theta, predictCost0
                 else:
                     predictCost1 = predictCost0
-                    class GradientDescent():
 
+
+class GradientDescent():
     def MinibatchGradientDescent(self,
                                  data_x,
                                  data_y,
@@ -149,4 +154,3 @@ class GradientDescent():
                 return theta, predictCost0
             else:
                 predictCost1 = predictCost0
-

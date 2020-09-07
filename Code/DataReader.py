@@ -2,10 +2,11 @@ import numpy as np
 
 
 class PrebuiltData():
-    def Fx(x, a=0, b=3, c=3):
+    def Fx(self, x, a=0, b=3, c=3):
         return a * x**2 + b * x + c
 
-    def MyData(rangeStart=1,
+    def MyData(self,
+               rangeStart=1,
                rangeEnd=100,
                rangeNum=100,
                randomFloat=1,
@@ -18,7 +19,7 @@ class PrebuiltData():
             PrebuiltData.Fx(data_x, a, b, c) + randomFloat * random)
         return data_x, data_y
 
-    def MyGivenData():
+    def MyGivenData(self):
         data_x = np.array(range(1, 100))
         data_y = np.array([
             3.03, 8.98, 9.76, 17.77, 19.36, 18.02, 21.67, 24.84, 30.06, 31.09,
@@ -36,7 +37,7 @@ class PrebuiltData():
         ])
         return data_x, data_y
 
-    def MyMultivariateGivenData(a=100, b=200, d=2, e=3, f=1):
+    def MyMultivariateGivenData(self, a=100, b=200, d=2, e=3, f=1):
         data_x = np.append([range(1, a)],
                            [range(2, b, b // a)]).reshape(2, a - 1)
         data_y = np.array(data_x[0] * d + data_x[1] * e +
@@ -44,7 +45,7 @@ class PrebuiltData():
         return data_x, data_y
 
     #3a + 5b + normal()
-    def MyMultivariateGivenData():
+    def MyMultivariateGivenData(self):
         data_x = []
         for i in range(1, 100):
             data_x.append([i, 2 * i])
