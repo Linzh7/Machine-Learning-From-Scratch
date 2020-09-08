@@ -15,22 +15,22 @@ class Cost():
         return bias
 
 
-class distance():
+class Distance():
     def Euclidean(a, b):
         sum = 0
-        for i in len(a):
+        for i in range(len(a)):
             sum += (a[i] - b[i])**2
         return math.sqrt(sum)
 
     def Manhattan(a, b):
         sum = 0
-        for i in len(a):
+        for i in range(len(a)):
             sum += abs(a[i] - b[i])
         return sum
 
     def Minkowski(a, b, p):
         sum = 0
         p = len(a)
-        for i in p:
+        for i in range(p):
             sum += (abs(a[i] - b[i]))**p
         return sum**(1 / p)
