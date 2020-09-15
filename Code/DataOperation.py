@@ -1,11 +1,11 @@
-def FillMissingData(self, sets):
+def FillMissingData(sets):
     for index in range(sets.shape[0]):
         if sets[index] == -1:
             sets[index] = sets.mean()
     return sets
 
 
-def LablePressing(self, data):
+def LablePressing(data):
     dic = {}
     for lable in data:
         if lable in dic:
@@ -19,7 +19,7 @@ def LablePressing(self, data):
     return mapping
 
 
-def Normalization(self, sets):
+def Normalization(sets):
     for i in range(len(sets[0])):
         sets[:, i] = (sets[:, i] - sets[:, i].min()) / sets[:, i].max()
     return sets
