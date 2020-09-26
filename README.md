@@ -1,4 +1,4 @@
-# Machine-Learning-From-Scratch
+# 从零开始的机器学习
 
 ## 数据预处理
 ### 特征缩放
@@ -55,3 +55,10 @@
 
 ### 闵可夫斯基距离（闵氏距离）
 可以看作以上几种距离的集合，其维度等于1时，为曼哈顿距离；为2时，为欧几里德距离；大于2时，为切比雪夫距离。
+
+
+# Machine Learning From Scratch
+## Data Preprocessing
+### Feature Scaling
+There is an aim that we want the result could show the difference evenly and will not be significant affected by the data in larger range. Therefore, we use scaling to force the different dimension of data have a similar range, for instance, [0, 1] or [-1, 1].
+
