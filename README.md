@@ -62,3 +62,10 @@
 ### Feature Scaling
 There is an aim that we want the result could show the difference evenly and will not be significant affected by the data in larger range. Therefore, we use scaling to force the different dimension of data have a similar range, for instance, [0, 1] or [-1, 1].
 
+### Process of Missing Data
+As for the missing data, it will product a wrong result if it be replaced into NAN or random value. Thus, we usually fill it with the average or median.
+
+## Visualization
+Visualization is the considerable method for us to catch the sight of low-dimension data.
+
+//For instance, if we set axis as a variable
